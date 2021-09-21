@@ -147,5 +147,18 @@ public class IndianCensusAnalyserTest {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
 		}
 	}
+	@Test
+	public void givenWrongHeader_InIndiaStateCodeData_ShouldReturnCustomExceptionType()
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			int numOfRecords = censusAnalyser.loadIndianStateCode(INDIAN_STATE_CODE_CSV_WRONG_HEADER);
+		} 
+		catch (CensusAnalyserException e) 
+		{
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
+		}
+	}
 
 }
