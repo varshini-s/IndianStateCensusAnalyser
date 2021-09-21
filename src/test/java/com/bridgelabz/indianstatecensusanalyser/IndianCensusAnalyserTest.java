@@ -103,4 +103,21 @@ public class IndianCensusAnalyserTest {
 		}
 	}
 	
+	@Test
+	public void givenIndiaStateCodeData_WithWrongFile_ShouldThrowException() 
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			ExpectedException exceptionRule = ExpectedException.none();
+			exceptionRule.expect(CensusAnalyserException.class);
+			censusAnalyser.loadIndianStateCode(WRONG_CSV_FILE_PATH);
+		} 
+		catch (CensusAnalyserException e) 
+		{
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+		}
+	}
+	
+	
 }
