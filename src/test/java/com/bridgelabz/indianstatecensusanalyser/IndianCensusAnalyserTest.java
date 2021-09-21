@@ -60,6 +60,19 @@ public class IndianCensusAnalyserTest {
 			Assert.assertEquals(CensusAnalyserException.ExceptionType.INCORRECT_FILE_TYPE, e.type);
 		}
 	}
+	@Test
+	public void givenWrongDelimiter_InIndiaCensusData_ShouldReturnCustomExceptionType()
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIAN_CENSUS_CSV_WRONG_DELIMITER);
+		} 
+		catch (CensusAnalyserException e) 
+		{
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
+		}
+	}
 	
 
 }
