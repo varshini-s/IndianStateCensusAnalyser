@@ -89,4 +89,18 @@ public class IndianCensusAnalyserTest {
 
 
 
+	@Test
+	public void givenIndianStateCodeCSVFile_ReturnsCorrectRecords() 
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			int numOfRecords = censusAnalyser.loadIndianStateCode(INDIA_STATE_CODE_CSV_FILE_PATH);
+			Assert.assertEquals(37, numOfRecords);
+		}
+		catch (CensusAnalyserException e) 
+		{
+		}
+	}
+	
 }
