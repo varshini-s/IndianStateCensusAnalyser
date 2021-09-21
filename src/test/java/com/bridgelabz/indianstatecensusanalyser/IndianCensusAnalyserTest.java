@@ -119,5 +119,21 @@ public class IndianCensusAnalyserTest {
 		}
 	}
 	
+	@Test
+	public void givenIndiaStateCodeData_WithWrongFileType_ShouldThrowException() 
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			ExpectedException exceptionRule = ExpectedException.none();
+			exceptionRule.expect(CensusAnalyserException.class);
+			censusAnalyser.loadIndianStateCode(WRONG_FILE_TYPE);
+		} catch (CensusAnalyserException e) 
+		{
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.INCORRECT_FILE_TYPE, e.type);
+		}
+	}
 	
+	
+
 }
