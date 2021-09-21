@@ -134,6 +134,18 @@ public class IndianCensusAnalyserTest {
 		}
 	}
 	
-	
+	@Test
+	public void givenWrongDelimiter_InIndiaStateCodeData_ShouldReturnCustomExceptionType()
+	{
+		try 
+		{
+			IndianCensusAnalyser censusAnalyser = new IndianCensusAnalyser();
+			int numOfRecords = censusAnalyser.loadIndianStateCode(INDIAN_STATE_CODE_CSV_WRONG_DELIMITER);
+		} 
+		catch (CensusAnalyserException e) 
+		{
+			Assert.assertEquals(CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
+		}
+	}
 
 }
